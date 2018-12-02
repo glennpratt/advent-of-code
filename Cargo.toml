@@ -1,0 +1,12 @@
+[package]
+name = "advent-of-code-2018"
+version = "0.0.0"
+authors = ["Glenn Pratt <glennpratt@gmail.com>"]
+
+[lib]
+bench = false
+
+[dependencies]
+rust-crypto = "*"
+aoc-runner = "*"
+aoc-runner-derive = "*"
