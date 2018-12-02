@@ -1,22 +1,25 @@
 use std::collections::HashSet;
+use std::iter::once;
 
 #[aoc(day1, part1)]
 pub fn part1(input: &str) -> i64 {
-    input.lines().map(|s| s.parse::<i64>().unwrap()).sum()
+    input.lines().map(line_delta).sum()
+}
+
+fn line_delta(line: &str) -> i64 {
+    line.parse().expect("invalid input line")
 }
 
 #[aoc(day1, part2)]
 pub fn part2(input: &str) -> i64 {
-    let mut seen: HashSet<i64> = HashSet::new();
     let mut sum = 0i64;
-    seen.insert(sum);
+    let mut seen: HashSet<i64> = once(sum).collect();
 
     input
         .lines()
         .cycle()
-        .find_map(|s| {
-            let delta = s.parse::<i64>().unwrap();
-            sum += delta;
+        .find_map(|line| {
+            sum += line_delta(line);
             if seen.insert(sum) {
                 None
             } else {
