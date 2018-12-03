@@ -7,16 +7,22 @@ pub fn part1(input: &str) -> i64 {
     let mut histogram: HashMap<char, i64> = HashMap::new();
 
     for line in input.lines() {
-        histogram.clear();
         for c in line.chars() {
             *histogram.entry(c).or_insert(0) += 1;
         }
-        if histogram.values().any(|n| *n == 3) {
-            triples += 1;
-        }
-        if histogram.values().any(|n| *n == 2) {
-            doubles += 1;
-        }
+
+        let (mut has_double, mut has_triple) = (false, false);
+        histogram.drain().any(|(_, n)| {
+            match n {
+                2 => has_double = true,
+                3 => has_triple = true,
+                _ => {}
+            }
+            has_double && has_triple
+        });
+
+        doubles += has_double as i64;
+        triples += has_triple as i64;
     }
 
     doubles * triples
@@ -30,13 +36,15 @@ pub fn part2(input: &str) -> String {
             let candidate: String = line_a
                 .chars()
                 .zip(line_b.chars())
-                .filter_map(|(char_a, char_b)| {
-                    if char_a == char_b {
-                        Some(char_a)
-                    } else {
-                        None
-                    }
-                }).collect();
+                .filter_map(
+                    |(char_a, char_b)| {
+                        if char_a == char_b {
+                            Some(char_a)
+                        } else {
+                            None
+                        }
+                    },
+                ).collect();
             if candidate.len() == len - 1 {
                 return candidate;
             }

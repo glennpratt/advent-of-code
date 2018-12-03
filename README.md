@@ -15,3 +15,11 @@
 ## Day 2 - Part 2 : srijafjzloguvlntqmphenbkd
 	generator: 432ns,
 	runner: 6.669816ms
+
+##Day 3 - Part 1 : 111935
+	generator: 34.643µs,
+	runner: 18.842154ms
+
+## Day 3 - Part 2 : 650
+	generator: 3.13µs,
+	runner: 22.679818ms
