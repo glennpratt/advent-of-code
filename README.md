@@ -16,7 +16,7 @@
 	generator: 432ns,
 	runner: 6.669816ms
 
-##Day 3 - Part 1 : 111935
+## Day 3 - Part 1 : 111935
 	generator: 34.643µs,
 	runner: 18.842154ms
 
