@@ -49,25 +49,24 @@ pub fn part2(input: &str) -> usize {
 }
 
 #[derive(Debug)]
-struct Grid(Vec<Vec<(u8, Option<Rc<AtomicBool>>)>>);
+struct Grid(Vec<Vec<Option<Rc<AtomicBool>>>>);
 
 impl Grid {
     fn new() -> Self {
-        let row = repeat((0, None)).take(1000).collect();
+        let row = repeat(None).take(1000).collect();
         let grid = repeat(row).take(1000).collect();
         Grid(grid)
     }
 
     fn mark(&mut self, x: usize, y: usize, new_is_unique: &mut Rc<AtomicBool>) {
-        self.0[y][x].0 = self.0[y][x].0.saturating_add(1);
         let mut is_none = true;
-        if let Some(ref mut first_is_unique) = self.0[y][x].1 {
+        if let Some(ref mut first_is_unique) = self.0[y][x] {
             (*first_is_unique).store(false, Ordering::Relaxed);
             (*new_is_unique).store(false, Ordering::Relaxed);
             is_none = false;
         }
         if is_none {
-            replace(&mut self.0[y][x].1, Some(Rc::clone(new_is_unique)));
+            replace(&mut self.0[y][x], Some(Rc::clone(new_is_unique)));
         }
     }
 
@@ -75,7 +74,7 @@ impl Grid {
         let mut overlaps = 0;
         for row in &self.0 {
             for item in row {
-                if item.0 > 1 {
+                if item.as_ref().map_or(false, |a| a.load(Ordering::Relaxed)) {
                     overlaps += 1;
                 }
             }
