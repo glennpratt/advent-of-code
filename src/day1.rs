@@ -1,3 +1,4 @@
+use aoc_runner_derive::*;
 use std::collections::HashSet;
 use std::iter::once;
 
@@ -25,7 +26,8 @@ pub fn part2(input: &str) -> i64 {
             } else {
                 Some(sum)
             }
-        }).unwrap()
+        })
+        .unwrap()
 }
 
 #[cfg(test)]

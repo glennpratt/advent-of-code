@@ -1,3 +1,4 @@
+use aoc_runner_derive::*;
 use std::collections::HashMap;
 
 #[aoc(day2, part1)]
@@ -44,7 +45,8 @@ pub fn part2(input: &str) -> String {
                             None
                         }
                     },
-                ).collect();
+                )
+                .collect();
             if candidate.len() == len - 1 {
                 return candidate;
             }

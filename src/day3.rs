@@ -1,3 +1,4 @@
+use aoc_runner_derive::*;
 use std::collections::HashMap;
 use std::iter::repeat;
 use std::mem::replace;
@@ -10,7 +11,7 @@ fn load(input: &str) -> (Grid, HashMap<usize, Rc<AtomicBool>>) {
 
     for line in input.lines() {
         let mut parts = line.split(|c| c == '@' || c == ':');
-        let mut id: usize = parts.next().unwrap()[1..].trim().parse().unwrap();
+        let id: usize = parts.next().unwrap()[1..].trim().parse().unwrap();
         let mut start = parts.next().unwrap().split(',');
         let start_x: usize = start.next().unwrap().trim().parse().unwrap();
         let start_y: usize = start.next().unwrap().parse().unwrap();

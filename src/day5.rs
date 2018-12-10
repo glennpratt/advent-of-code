@@ -1,6 +1,4 @@
-// use regex::Regex;
-// use std::collections::HashMap;
-// use std::iter::repeat;
+use aoc_runner_derive::*;
 
 #[aoc(day5, part1)]
 pub fn part1(input: &str) -> usize {
@@ -9,11 +7,7 @@ pub fn part1(input: &str) -> usize {
     let mut change_tries = 1;
 
     loop {
-        // eprintln!("{:?}", input);
-        change_tries = change_tries - 1;
-        // let mut delete_next = false;
-
-        // let mut iter = input.iter_mut().filter(|c| *c != &null).peekable();
+        change_tries -= 1;
 
         for i in 0..input.len() {
             let c = input[i];
@@ -38,8 +32,6 @@ pub fn part1(input: &str) -> usize {
                 c.to_ascii_uppercase()
             };
 
-            // eprintln!("{}{} swap {}", c, d, swap);
-
             if swap == d {
                 change_tries += 1;
                 input[i] = null;
@@ -51,11 +43,8 @@ pub fn part1(input: &str) -> usize {
             break;
         }
     }
-    let s: String = input.iter().filter(|c| *c != &null).collect();
-    // eprintln!("{:?}", s);
 
-    // input.iter().filter(|c| *c != &null).count()
-    s.len()
+    input.iter().filter(|c| *c != &null).count()
 }
 
 #[aoc(day5, part2)]
@@ -67,9 +56,9 @@ pub fn part2(input: &str) -> usize {
                 .chars()
                 .filter(|c| c.to_ascii_lowercase() != alpha)
                 .collect();
-            // eprintln!("{}", filtered);
             part1(&filtered)
-        }).min()
+        })
+        .min()
         .unwrap()
 }
 
