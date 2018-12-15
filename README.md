@@ -31,3 +31,21 @@
 ## Day 4 - Part 2 : 71976
         generator: 5.569µs,
         runner: 1.658148ms
+
+## Day 5... let's not right now.
+
+## Day 6 - Part 1 : 5532
+        generator: 6.348µs,
+        runner: 12.664902ms
+
+## Day 6 - Part 2 : 36216
+        generator: 153ns,
+        runner: 27.703472ms
+
+## Day 7 - Part 1 : BETUFNVADWGPLRJOHMXKZQCISY
+        generator: 13.759µs,
+        runner: 814.321µs
+
+## Day 7 - Part 2 : 848
+        generator: 415ns,
+        runner: 301.752µs
