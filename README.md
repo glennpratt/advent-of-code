@@ -32,7 +32,13 @@
         generator: 5.569µs,
         runner: 1.658148ms
 
-## Day 5... let's not right now.
+## Day 5 - Part 1 : 11590
+        generator: 2.052µs,
+        runner: 1.127497122s
+
+## Day 5 - Part 2 : 4504
+        generator: 69ns,
+        runner: 26.666049032s
 
 ## Day 6 - Part 1 : 5532
         generator: 6.348µs,

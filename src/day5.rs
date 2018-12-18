@@ -3,29 +3,18 @@ use aoc_runner_derive::*;
 #[aoc(day5, part1)]
 pub fn part1(input: &str) -> usize {
     let mut input: Vec<_> = input.chars().filter(|c| c.is_ascii_alphabetic()).collect();
-    let null = '\0';
     let mut change_tries = 1;
 
     loop {
         change_tries -= 1;
 
         for i in 0..input.len() {
-            let c = input[i];
-
-            let (j, d) = match input
-                .iter()
-                .enumerate()
-                .skip(i + 1)
-                .find(|(_, c)| *c != &null)
-            {
-                Some((j, d)) => (j, *d),
-                None => break,
-            };
-
-            if c == null || d == null {
-                continue;
+            let j = i + 1;
+            if j >= input.len() {
+                break;
             }
-
+            let c = input[i];
+            let d = input[j];
             let swap = if c.is_ascii_uppercase() {
                 c.to_ascii_lowercase()
             } else {
@@ -34,8 +23,8 @@ pub fn part1(input: &str) -> usize {
 
             if swap == d {
                 change_tries += 1;
-                input[i] = null;
-                input[j] = null;
+                input.remove(i);
+                input.remove(j - 1);
             }
         }
 
@@ -44,7 +33,7 @@ pub fn part1(input: &str) -> usize {
         }
     }
 
-    input.iter().filter(|c| *c != &null).count()
+    input.len()
 }
 
 #[aoc(day5, part2)]
