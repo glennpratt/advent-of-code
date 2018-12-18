@@ -49,3 +49,11 @@
 ## Day 7 - Part 2 : 848
         generator: 415ns,
         runner: 301.752µs
+
+## Day 8 - Part 1 : 42472
+        generator: 2.281µs,
+        runner: 429.941µs
+
+## Day 8 - Part 2 : 21810
+        generator: 80ns,
+        runner: 355.714µs
